@@ -1,7 +1,7 @@
 import 'package:blog_app/faetures/blog/domain/entities/blog.dart';
-import 'package:blog_app/faetures/blog/presentation/bloc/blog_bloc.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class CustomCard extends StatelessWidget {
   final Blog blog;
@@ -20,50 +20,40 @@ class CustomCard extends StatelessWidget {
         children: [
           Card(
             elevation:
-                10.0, // Increase the elevation for a more prominent shadow
+                10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
             shadowColor: Colors.black54,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Container(
-                height: 210,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(blog.image_url),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              child: SizedBox(
+              width: double.infinity,
+              height: 240,
+           child: blog.isOnline? CachedNetworkImage( imageUrl:blog.image_url ,fit: BoxFit.cover,):Image.asset('assets/offline.jpg',fit: BoxFit.cover,),
+            ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             blog.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Poppins',
               fontSize: 16,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Author'),
-              IconButton(
-                  onPressed: () {
-                    context.read<BlogBloc>().add(SaveBloges(
-                        id: blog.id,
-                        image_url: blog.image_url,
-                        title: blog.title));
-                  },
-                  icon: Icon(Icons.book_outlined))
+             Text('3 min')
             ],
+         
           ),
+        
           const Divider(color: Colors.grey, thickness: 0.6),
         ],
       ),

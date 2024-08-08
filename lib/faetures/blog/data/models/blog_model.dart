@@ -9,21 +9,26 @@ class BlogModel extends Blog {
     required super.id,
     required super.title,
     required super.image_url,
+    super.isOnline
 
   });
 
   
-  Blog copyWith({
+
+  BlogModel copyWith({
     String? id,
     String? image_url,
     String? title,
+    bool? isOnline
   }) {
-    return Blog(
+    return BlogModel(
       id: id ?? this.id,
       image_url: image_url ?? this.image_url,
       title: title ?? this.title,
+      isOnline: isOnline?? this.isOnline
     );
   }
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,6 +43,7 @@ class BlogModel extends Blog {
       id: map['id'] as String,
       image_url: map['image_url'] as String,
       title: map['title'] as String,
+      isOnline:false
     );
   }
 

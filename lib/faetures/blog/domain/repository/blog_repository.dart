@@ -7,9 +7,5 @@ abstract interface class BlogRepository {
 
   Future<Either<Failure,List<Blog>>> getAllBlogs();
 
-    Future<Either<Failure, void>> saveBlog({
-    required String id,
-    required String image_url,
-    required String title,
-  });
+
 }

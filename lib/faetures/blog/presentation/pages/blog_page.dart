@@ -10,8 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class BlogPage extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => const BlogPage());
   const BlogPage({super.key});
+
+  
 
   @override
   State<BlogPage> createState() => _BlogPageState();
@@ -48,8 +49,6 @@ class _BlogPageState extends State<BlogPage> {
                   listener: (context, state) {
                     if (state is BlogFailure) {
                       return showSnackBar(context, state.error);
-                    } else if (state is BlogSaveSuccess) {
-                      return showSnackBar(context, 'success');
                     }
                   },
                   builder: (context, state) {

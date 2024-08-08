@@ -13,7 +13,7 @@ final class BlogFailure extends BlogState {
   BlogFailure({required this.error});
 }
 
-final class BlogSaveSuccess extends BlogState{}
+
 
 final class BlogFetchSuccess extends BlogState {
   final List<Blog> blogs;

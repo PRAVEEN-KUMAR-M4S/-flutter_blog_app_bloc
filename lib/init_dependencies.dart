@@ -4,7 +4,6 @@ import 'package:blog_app/faetures/blog/data/datasources/hive_database.dart';
 import 'package:blog_app/faetures/blog/data/repository/blog_repository_imp.dart';
 import 'package:blog_app/faetures/blog/domain/repository/blog_repository.dart';
 import 'package:blog_app/faetures/blog/domain/usecases/get_blogs.dart';
-import 'package:blog_app/faetures/blog/domain/usecases/save_to_hive.dart';
 import 'package:blog_app/faetures/blog/presentation/bloc/blog_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -33,8 +32,8 @@ void _initBlog() {
   serviceLocator.registerFactory(() => GetBlogs(serviceLocator()));
 
   serviceLocator.registerFactory<BlogHiveStorage>(() => BlogHiveStrorageImp(serviceLocator()));
-  serviceLocator.registerFactory(() => SaveToHive(serviceLocator()));
+  
 
   serviceLocator.registerLazySingleton(
-      () => BlogBloc(serviceLocator(), serviceLocator()));
+      () => BlogBloc(serviceLocator(), ));
 }
